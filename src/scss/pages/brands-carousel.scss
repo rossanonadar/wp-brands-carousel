@@ -1,0 +1,324 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
+.brands-carousel {
+  flex: 1 1 100%;
+  position: relative;
+
+  @include desktop-sm { flex: 1 1 40%; }
+
+  @include mobile {
+    width: 100%;
+    padding: px-to-rem(44) 0 0;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: px-to-rem(21);
+
+    @include mobile {
+      flex-direction: column;
+      gap: px-to-rem(16);
+    }
+  }
+
+  &__inner {
+    width: 100%;
+    height: 80vh;
+    padding-block: px-to-rem(48);
+    margin-left: 0;
+
+  @include tablet { height: calc(370px * 1.6 + 24px * 2); }
+  // @include tablet { height:  65vh }
+
+
+    @include mobile {
+      width: 100%;
+      height: auto;
+      padding-block: px-to-rem(16);
+    }
+  }
+
+  &__nav-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: px-to-rem(11);
+    margin: 0 px-to-rem(54) 0 px-to-rem(-34); 
+    padding: px-to-rem(16) px-to-rem(8);
+    background-color: $color-primary;
+    border-radius: px-to-rem(200);
+    z-index: 10;
+
+    @include desktop { margin: 0 px-to-rem(54) 0 px-to-rem(0); }
+
+    @include tablet { margin: 0 }
+
+    @include mobile { display: none; }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: px-to-rem(30);
+    height: px-to-rem(30);
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    @include desktop {
+      width: px-to-rem(27);
+      height: px-to-rem(27);
+    }
+
+    &::after {
+      content: '';
+      width: px-to-rem(30);
+      height: px-to-rem(30);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-image: url('../images/light-arrow.svg');
+
+      @include desktop {
+        width: px-to-rem(27);
+        height: px-to-rem(27);
+      }
+    }
+
+    &--next::after { background-image: url('../images/dark-arrow.svg'); }
+
+    &:hover,
+    &:focus { transform: scale(1.05); }
+  }
+
+  &__pagination {
+    display: none;
+
+    @include mobile {
+      position: relative !important;
+      display: flex;
+      justify-content: center;
+      gap: px-to-rem(4);
+      margin-top: px-to-rem(24);
+      padding-bottom: px-to-rem(24);
+
+      @include mobile-sm { 
+        margin-top: px-to-rem(-16);
+        padding-bottom: px-to-rem(16);
+      };
+      
+    }
+
+    .swiper-pagination-bullet.swiper-pagination-bullet-active { background-color: $color-primary; }
+  }
+}
+
+.brands-carousel--desktop {
+  .brands-card__mobile { display: none !important; }
+}
+
+.brands-carousel--mobile {
+  width: 100%;
+
+  .brands-card {
+    width: 100%;
+    background: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .brands-card__body--desktop { display: none !important; }
+
+  .brands-card__mobile { display: flex; }
+}
+
+.brands-card {
+  position: relative;
+  background: var(--brand-card-bg, transparent);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: px-to-rem(20);
+  overflow: hidden;
+  margin: auto;
+  max-width: px-to-rem(800);
+  min-height: px-to-rem(420);
+
+  @include desktop-sm { 
+    width: px-to-rem(656); 
+    height: px-to-rem(369);
+
+  }
+
+  @include tablet {
+    width: px-to-rem(500);
+    min-height: px-to-rem(385) !important;
+  }
+
+  @include mobile-sm {
+    width: 100%;
+    background: none;
+    border-radius: 0;
+    overflow: visible;
+    min-height: px-to-rem(600) !important;
+
+  }
+
+  &.swiper-slide {
+    display: flex;
+    justify-content: center;
+    max-width: px-to-rem(800);
+
+    @include desktop { max-width: px-to-rem(670); }
+
+  }
+
+  &__body {
+    background-color: $orange-background;
+    border-radius: px-to-rem(20);
+    padding: px-to-rem(42) px-to-rem(32);
+
+    @include desktop { padding: px-to-rem(32) px-to-rem(28); }
+  }
+
+  &__body--desktop {
+    position: absolute;
+    width: px-to-rem(334);
+    bottom: px-to-rem(32);
+    left: px-to-rem(21);
+
+    @include desktop { width: px-to-rem(318); }
+
+    @include desktop-sm {
+      width: px-to-rem(295);
+      padding: px-to-rem(24);
+    }
+
+    @include tablet { left: px-to-rem(16);  width: px-to-rem(255); }
+
+    @include mobile-sm { display: none; }
+  }
+
+  &__mobile {
+    display: none;
+
+    @include mobile-sm {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-radius: px-to-rem(24);
+      overflow: hidden;
+      background-color: transparent;
+    }
+  }
+
+  &__body--mobile {
+    display: none;
+
+    @include mobile-sm {
+      display: block;
+      position: relative;
+      border-radius: px-to-rem(24) px-to-rem(24) 0 0;
+      padding: px-to-rem(32) px-to-rem(28);
+      background-color: $orange-background;
+    }
+
+    @include mobile-sm { padding: px-to-rem(28) px-to-rem(22); }
+  }
+
+  &__media--mobile {
+    display: none;
+
+    @include mobile-sm { display: block; }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+  }
+
+  &__logo {
+    max-width: px-to-rem(120);
+    width: auto;
+    height: px-to-rem(30);
+
+    @include desktop-sm { height: px-to-rem(26); }
+
+    @include mobile-sm {
+      max-width: px-to-rem(102);
+      height: px-to-rem(22);
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: px-to-rem(24);
+    font-weight: 700;
+  }
+
+  &__description {
+    font-family: $font-heading;
+    font-weight: 400;
+    font-size: px-to-rem(26);
+    line-height: px-to-rem(32);
+    letter-spacing: 0.3px;
+    padding: px-to-rem(13) 0 px-to-rem(32);
+    margin: 0;
+
+    @include desktop { font-size: px-to-rem(24); }
+
+    @include tablet {
+      font-size: px-to-rem(18);
+      line-height: px-to-rem(26);
+      padding-bottom: px-to-rem(16);
+    }
+
+    @include mobile {
+      font-size: px-to-rem(22);
+      line-height: px-to-rem(28);
+      width: 100%;
+    }
+
+    @include mobile-sm { font-size: px-to-rem(20); }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: px-to-rem(16);
+    font-weight: 600;
+    padding: px-to-rem(10) px-to-rem(24);
+    border-radius: 999px;
+    background-color: transparent;
+    border: 1px solid $color-primary;
+    color: $color-primary;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+
+    &:hover,
+    &:focus { opacity: 0.7; }
+
+    @include desktop-sm { padding: px-to-rem(8) px-to-rem(16); }
+
+    @include mobile { align-self: flex-start; }
+  }
+}
+
+.brands-carousel__inner.swiper-autoheight,
+.swiper-autoheight .swiper-slide {
+  @include mobile { height: px-to-rem(420) !important; }
+  @include mobile-sm { height: px-to-rem(600) !important; }
+}
+

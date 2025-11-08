@@ -1,0 +1,195 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
+body.page-template-page-brands {
+  background-color: $color-background;
+  color: $color-text;
+}
+
+.brands-layout {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0 px-to-rem(144);
+  gap: px-to-rem(88);
+
+  @include desktop  {
+    padding: 0 px-to-rem(72);
+      gap: px-to-rem(24);
+  }
+
+  @include desktop-sm {
+      padding: 0 px-to-rem(32); 
+        gap: px-to-rem(0);
+  }
+
+  @include mobile {
+    display: block;
+    padding: 0 px-to-rem(0); 
+  }
+  @include mobile-sm {
+    padding: 0 px-to-rem(24);
+  }
+  .brands-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $color-primary;
+    padding: px-to-rem(80) 0 0 0;
+  
+    @include desktop  { padding: 0; }
+  
+    @include desktop-sm { margin: px-to-rem(-37) 0 0 0; }
+
+     @include mobile {
+       margin: px-to-rem(0) 0 0 0;
+       padding: px-to-rem(40) 0 0 0;
+      }
+
+    &__content {
+     width: px-to-rem(520);
+      @include desktop  { width: px-to-rem(488); }
+      @include desktop-sm { width: px-to-rem(488); }
+
+      @include tablet { width: px-to-rem(355); }
+       @include mobile {
+        width: 60%;
+        margin: auto;
+        text-align: center;
+      }
+      @include mobile-sm { width: 95%; }
+    }
+
+    &__title {
+      font-family: $font-heading;
+      font-size:  px-to-rem(60);
+      font-weight: 600;
+      line-height:  px-to-rem(68);
+      letter-spacing: 0.3px;
+      color: #313438;
+      margin: 0;
+      padding: 0 0 px-to-rem(14) 0;
+
+      @include tablet {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: px-to-rem(47);
+        line-height: px-to-rem(55);
+        letter-spacing: 0.3px;
+      }
+      @include mobile-sm {
+          font-size: px-to-rem(32);
+        line-height: px-to-rem(38);
+      }
+    }
+    &__description {
+      width: 80%;
+      font-family: $font-base;
+      font-weight: 400;
+      font-size: px-to-rem(18);
+      line-height: px-to-rem(26);
+      color: $color-primary;
+      margin: 0;
+      padding: 0 0 px-to-rem(38) 0;
+
+        @include tablet {
+          width: 100%;
+        }
+
+      @include mobile {
+        width: 90%;
+        margin: auto;
+        padding: 0 0  px-to-rem(25) 0;
+      }
+
+      @include mobile-sm {
+        width: 100%;
+        font-size: px-to-rem(14);
+        line-height: px-to-rem(20);
+      }
+    }
+    &__cta {
+      display: inline-flex;
+      padding: px-to-rem(14) px-to-rem(28);
+      border-radius: 999px;
+      background-color: $btn-primary-color;
+      color: #fff;
+      font-size: px-to-rem(16);
+      line-height: px-to-rem(16);
+      letter-spacing: 0;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+       @include mobile-sm {
+        width: 83%;
+        display: flex;
+        justify-content: center;
+      }
+
+      &:hover,
+      &:focus {
+      opacity: 0.7;
+      }
+    }
+  }
+}
+
+
+.brands-logos {
+  background-color: $light-background;
+  padding: px-to-rem(50) 0 px-to-rem(62) 0;
+  overflow: hidden;
+
+    &__marquee {
+      display: flex;
+      width: max-content;
+      animation: brands-marquee 70s linear infinite;
+      will-change: transform;   /* smoother on Chrome/Safari */
+
+
+    }
+    &__track {
+      display: flex;
+      gap: clamp(3rem, 8vw, 6rem);
+    }
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: px-to-rem(140);
+      opacity: 0.75;
+      transition: opacity 0.2s ease;
+
+      &:hover,
+      &:focus-within {
+        opacity: 1;
+      }
+
+      img {
+        max-height: px-to-rem(42);
+        width: auto;
+        filter: grayscale(100%);
+      }
+
+      span {
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: px-to-rem(14);
+      }
+    }
+}
+
+.brands-logos:hover .brands-logos__marquee,
+.brands-logos:focus-within .brands-logos__marquee {
+  animation-play-state: paused;
+}
+
+@keyframes brands-marquee {
+  from { transform: translateX(0);}
+
+  to { transform: translateX(-50%); }
+}
+
+

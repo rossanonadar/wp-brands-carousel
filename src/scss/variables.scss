@@ -1,0 +1,25 @@
+/* Typography*/
+$font-base: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+$font-stack: $font-base; // keep backwards compatibility with existing partials
+$font-heading: 'ivypresto-headline';
+
+/* Colors */
+$color-primary: #313438;
+$color-text: #1f2933;
+$color-background: #F9F3E4;
+$btn-primary-color:#0042E4;
+$orange-background: #F68B6E;
+$light-background: rgb(255, 252, 245);
+
+
+
+/* Layout */
+$layout-max-width: 720px;
+$layout-spacing: 3rem;
+
+
+/* Utility Functions */
+$base-font-size: 16;
+@function px-to-rem($size) {
+    @return $size / $base-font-size * 1rem;
+}
