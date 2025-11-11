@@ -16,7 +16,6 @@ if ( have_posts() ) :
         $hero_title       = function_exists( 'get_field' ) ? get_field( 'hero_title', get_the_ID() ) : '';
         $hero_description = function_exists( 'get_field' ) ? get_field( 'hero_description', get_the_ID() ) : '';
         $hero_cta         = function_exists( 'get_field' ) ? get_field( 'hero_cta', get_the_ID() ) : '';
-        $hero_media       = function_exists( 'get_field' ) ? get_field( 'hero_media', get_the_ID() ) : '';
 
         $hero_title       = $hero_title ? $hero_title : get_the_title();
 
@@ -36,21 +35,8 @@ if ( have_posts() ) :
             ];
         }
 
-        if ( ! $hero_media && has_post_thumbnail() ) {
-            $hero_media = get_post_thumbnail_id();
-        }
 
         $hero_media_src = '';
-
-        if ( $hero_media ) {
-            if ( is_numeric( $hero_media ) ) {
-                $hero_media_src = wp_get_attachment_image_url( $hero_media, 'large' );
-            } elseif ( is_array( $hero_media ) && isset( $hero_media['ID'] ) ) {
-                $hero_media_src = wp_get_attachment_image_url( $hero_media['ID'], 'large' );
-            } elseif ( is_string( $hero_media ) ) {
-                $hero_media_src = $hero_media;
-            }
-        }
 
         $brands = get_posts(
             [
@@ -70,27 +56,26 @@ if ( have_posts() ) :
                 get_template_part('template-parts/brands/carousel', null,compact( 'brands', 'has_brands' ));
             ?>
         </div>
-        <?php
-    endwhile;
-endif;
+        <?php endwhile; endif;
 
-$global_logos = function_exists( 'yotpo_theme_get_option' ) ? yotpo_theme_get_option( 'global_logos', [] ) : [];
+        $global_logos = function_exists( 'yotpo_theme_get_option' ) ? yotpo_theme_get_option( 'global_logos', [] ) : [];
 
-if ( empty( $global_logos ) && ! empty( $brands ) ) {
-    $global_logos = array_map(
-        static function ( $brand_post ) {
-            $brand_id = $brand_post->ID;
+            if ( empty( $global_logos ) && ! empty( $brands ) ) {
+                $global_logos = array_map(
+                    static function ( $brand_post ) {
+                        $brand_id = $brand_post->ID;
 
-            return [
-                'logo'  => function_exists( 'get_field' ) ? get_field( 'logo', $brand_id ) : '',
-                'label' => get_the_title( $brand_id ),
-            ];
-        },
-        $brands
-    );
-}
+                        return [
+                            'logo'  => function_exists( 'get_field' ) ? get_field( 'logo', $brand_id ) : '',
+                            'label' => get_the_title( $brand_id ),
+                        ];
+                    },
+                    $brands
+                );
+            }
 
-if ( ! empty( $global_logos ) ) {
-}
-get_template_part( 'template-parts/brands/logos', null, compact( 'global_logos' ) );
+            if ( ! empty( $global_logos ) ) {
+            }
+            get_template_part( 'template-parts/brands/logos', null, compact( 'global_logos' ) );
+            
 get_footer();

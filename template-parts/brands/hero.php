@@ -19,14 +19,13 @@ $context = wp_parse_args(
         'hero_title'       => '',
         'hero_description' => '',
         'hero_cta'         => [],
-        'hero_media_src'   => '',
+    
     ]
 );
 
-$hero_title       = $context['hero_title'];
-$hero_description = $context['hero_description'];
-$hero_cta         = $context['hero_cta'];
-$hero_media_src   = $context['hero_media_src'];
+    $hero_title       = $context['hero_title'];
+    $hero_description = $context['hero_description'];
+    $hero_cta         = $context['hero_cta'];
 ?>
 <section class="brands-hero">
     <div class="brands-hero__content">
@@ -48,9 +47,4 @@ $hero_media_src   = $context['hero_media_src'];
         <?php endif; ?>
     </div>
 
-    <?php if ( $hero_media_src ) : ?>
-        <div class="brands-hero__media">
-            <img src="<?php echo esc_url( $hero_media_src ); ?>" alt="<?php echo esc_attr( $hero_title ); ?>" />
-        </div>
-    <?php endif; ?>
 </section>

@@ -41,62 +41,62 @@ function yotpo_theme_register_acf_fields() {
         return;
     }
 
-    // acf_add_local_field_group(
-    //     [
-    //         'key'    => 'group_yotpo_theme_settings',
-    //         'title'  => __( 'Theme Settings', 'yotpo-theme' ),
-    //         'fields' => [
-    //             [
-    //                 'key'           => 'field_yotpo_main_logo',
-    //                 'label'         => __( 'Main Logo', 'yotpo-theme' ),
-    //                 'name'          => 'main_logo',
-    //                 'type'          => 'image',
-    //                 'instructions'  => __( 'Upload the main header logo (SVG recommended).', 'yotpo-theme' ),
-    //                 'required'      => 0,
-    //                 'return_format' => 'id',
-    //                 'preview_size'  => 'medium',
-    //                 'library'       => 'all',
-    //             ],
-    //             [
-    //                 'key'          => 'field_yotpo_global_logos',
-    //                 'label'        => __( 'Brand Logos', 'yotpo-theme' ),
-    //                 'name'         => 'global_logos',
-    //                 'type'         => 'repeater',
-    //                 'instructions' => __( 'Logos displayed in the Brands footer strip.', 'yotpo-theme' ),
-    //                 'button_label' => __( 'Add Logo', 'yotpo-theme' ),
-    //                 'layout'       => 'table',
-    //                 'sub_fields'   => [
-    //                     [
-    //                         'key'           => 'field_yotpo_brand_logo_image',
-    //                         'label'         => __( 'Logo Image', 'yotpo-theme' ),
-    //                         'name'          => 'logo',
-    //                         'type'          => 'image',
-    //                         'return_format' => 'id',
-    //                         'preview_size'  => 'thumbnail',
-    //                         'library'       => 'all',
-    //                     ],
-    //                     [
-    //                         'key'   => 'field_yotpo_brand_logo_label',
-    //                         'label' => __( 'Label', 'yotpo-theme' ),
-    //                         'name'  => 'label',
-    //                         'type'  => 'text',
-    //                     ],
-    //                 ],
-    //             ],
-    //         ],
-    //         'location' => [
-    //             [
-    //                 [
-    //                     'param'    => 'options_page',
-    //                     'operator' => '==',
-    //                     'value'    => 'theme-settings',
-    //                 ],
-    //             ],
-    //         ],
-    //         'position' => 'normal',
-    //         'style'    => 'default',
-    //     ]
-    // );
+    acf_add_local_field_group(
+        [
+            'key'    => 'group_yotpo_theme_settings',
+            'title'  => __( 'Theme Settings', 'yotpo-theme' ),
+            'fields' => [
+                [
+                    'key'           => 'field_yotpo_main_logo',
+                    'label'         => __( 'Main Logo', 'yotpo-theme' ),
+                    'name'          => 'main_logo',
+                    'type'          => 'image',
+                    'instructions'  => __( 'Upload the main header logo (SVG recommended).', 'yotpo-theme' ),
+                    'required'      => 0,
+                    'return_format' => 'id',
+                    'preview_size'  => 'medium',
+                    'library'       => 'all',
+                ],
+                [
+                    'key'          => 'field_yotpo_global_logos',
+                    'label'        => __( 'Brand Logos', 'yotpo-theme' ),
+                    'name'         => 'global_logos',
+                    'type'         => 'repeater',
+                    'instructions' => __( 'Logos displayed in the Brands footer strip.', 'yotpo-theme' ),
+                    'button_label' => __( 'Add Logo', 'yotpo-theme' ),
+                    'layout'       => 'table',
+                    'sub_fields'   => [
+                        [
+                            'key'           => 'field_yotpo_brand_logo_image',
+                            'label'         => __( 'Logo Image', 'yotpo-theme' ),
+                            'name'          => 'logo',
+                            'type'          => 'image',
+                            'return_format' => 'id',
+                            'preview_size'  => 'thumbnail',
+                            'library'       => 'all',
+                        ],
+                        [
+                            'key'   => 'field_yotpo_brand_logo_label',
+                            'label' => __( 'Label', 'yotpo-theme' ),
+                            'name'  => 'label',
+                            'type'  => 'text',
+                        ],
+                    ],
+                ],
+            ],
+            'location' => [
+                [
+                    [
+                        'param'    => 'options_page',
+                        'operator' => '==',
+                        'value'    => 'theme-settings',
+                    ],
+                ],
+            ],
+            'position' => 'normal',
+            'style'    => 'default',
+        ]
+    );
 }
 
 /**

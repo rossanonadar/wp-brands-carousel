@@ -27,8 +27,7 @@ if ( empty( $global_logos ) ) {
     <div class="brands-logos__marquee">
         <?php for ( $i = 0; $i < 2; $i++ ) : ?>
             <div class="brands-logos__track">
-                <?php
-                foreach ( $global_logos as $logo ) :
+                <?php foreach ( $global_logos as $logo ) :
                     $logo_image = isset( $logo['logo'] ) ? $logo['logo'] : '';
                     $logo_label = isset( $logo['label'] ) ? $logo['label'] : '';
 
@@ -42,7 +41,7 @@ if ( empty( $global_logos ) ) {
                             $logo_src = $logo_image;
                         }
                     }
-                    ?>
+                ?>
                     <div class="brands-logos__item">
                         <?php if ( $logo_src ) : ?>
                             <img src="<?php echo esc_url( $logo_src ); ?>" alt="<?php echo esc_attr( $logo_label ); ?>" />
@@ -50,9 +49,7 @@ if ( empty( $global_logos ) ) {
                             <span><?php echo esc_html( $logo_label ); ?></span>
                         <?php endif; ?>
                     </div>
-                    <?php
-                endforeach;
-                ?>
+                <?php endforeach; ?>
             </div>
         <?php endfor; ?>
     </div>
